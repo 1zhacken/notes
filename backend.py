@@ -12,7 +12,8 @@ def index():
 
 @app.route('/add_note', methods=['POST'])
 def add_note():
-    Notepad.add_note(flask.request.form['title'], flask.request.form['text'])
+    data = flask.request.form
+    Notepad.add_note(data['title'], data['text'])
     return flask.jsonify({'status': 'ok'})
 
 ##############################################################################
