@@ -8,7 +8,6 @@ app = flask.Flask(__name__)
 def index():
     return flask.render_template('/index.html')
 
-
 ################################### API ######################################
 
 @app.route('/add_note', methods=['POST'])
