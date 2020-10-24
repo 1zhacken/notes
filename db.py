@@ -46,10 +46,10 @@ class Notepad:
     
     @classmethod 
     def get_note_by_id(note_id):
-        return Note.get(Note.note_id=note_id)
+        return Note.get(Note.note_id==note_id)
 
     @classmethod
-    def get_notes_by_amount(start=0, amount=cfg['default_load_amount'])
+    def get_notes_by_amount(start=0, amount=cfg['default_load_amount']):
         return Note.select().where(
             Note.note_id >= start & 
             Note.note_id < start+amount
@@ -71,7 +71,7 @@ class Notepad:
     
     @classmethod
     def delete_note(note_id):
-        return Note.get(Note.note_id=note_id).delete_instance()
+        return Note.get(Note.note_id==note_id).delete_instance()
 
 
 #table struct for notes in notepad
