@@ -45,32 +45,37 @@ class Notepad:
         return Note.select().dicts()
     
     @classmethod 
-    def get_note_by_id(note_id):
+    def get_note_by_id(shit, note_id):
         return Note.get(Note.note_id==note_id)
 
     @classmethod
-    def get_notes_by_amount(start=0, amount=cfg['default_load_amount']):
-        return Note.select().where(
+    def get_notes_by_amount(shit, start, amount):
+        notes = Note.select().where(
             Note.note_id >= start & 
             Note.note_id < start+amount
         )
+        req = []
+        for n in notes:
+            req.append({'id': n.note_id, 'title': n.title, 'text': n.text, 'date': n.created_at})
+        
+        return req
 
     @classmethod
-    def add_note(title='new note', text=''):
+    def add_note(shit, title='new note', text=''):
         return Note (title       = title, 
                      text        = text, 
                      created_at  = str(dt.now())
                     ).save()
 
     @classmethod
-    def update_note(note_id, title, text):
+    def update_note(shit, note_id, title, text):
         return Note (note_id    = note_id,
                      title      = title,
                      text       = text
                     ).save()
     
     @classmethod
-    def delete_note(note_id):
+    def delete_note(shit, note_id):
         return Note.get(Note.note_id==note_id).delete_instance()
 
 
