@@ -1,0 +1,13 @@
+body {
+    margin: auto;
+    background-color: #ffeeee;
+    color: #222222;
+    display: flex;
+    flex-direction: column;
+}
+
+body > * {
+    max-width: 30%;
+    margin-bottom: 2%;
+    text-shadow: 1px 1px 1px rgba(2,2,2,0.1);
+}
